@@ -41,8 +41,8 @@ public class ConditionCommandParser implements Parser<ConditionCommand> {
 
         // Check if condition is too long (more than 6 words)
         if (condition.split("\\s+").length > 6) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT
-                    , ConditionCommand.MESSAGE_CONDITION_TOO_LONG));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    ConditionCommand.MESSAGE_CONDITION_TOO_LONG));
         }
 
         return new ConditionCommand(targetIndex, condition);
