@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,17 +25,29 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<String> medicalConditions = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<String> medicalConditions) {
+        requireAllNonNull(name, phone, email, address, tags, medicalConditions);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.medicalConditions.addAll(medicalConditions);
+    }
+
+    public Set<String> getMedicalConditions() {
+        return Collections.unmodifiableSet(medicalConditions);
+    }
+
+    public Person addMedicalCondition(String condition) {
+        Set<String> updatedConditions = new HashSet<>(this.medicalConditions);
+        updatedConditions.add(condition);
+        return new Person(this.name, this.phone, this.email, this.address, this.tags, updatedConditions);
     }
 
     public Name getName() {

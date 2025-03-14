@@ -36,6 +36,7 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
+    public static final String PREFIX_MEDICAL_CONDITIONS = "mc/";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the displayed person list. "
@@ -109,8 +110,9 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Set<String> updatedMedicalConditions = editPersonDescriptor.getMedicalConditions().orElse(personToEdit.getMedicalConditions());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedMedicalConditions);
     }
 
     @Override
@@ -151,6 +153,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Set<String> medicalConditions;
 
         public EditPersonDescriptor() {}
 
@@ -164,6 +167,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setMedicalConditions(toCopy.medicalConditions);
         }
 
         /**
@@ -222,6 +226,13 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setMedicalConditions(Set<String> medicalConditions) {
+            this.medicalConditions = (medicalConditions != null) ? new HashSet<>(medicalConditions) : null;
+        }
+
+        public Optional<Set<String>> getMedicalConditions() {
+            return (medicalConditions != null) ? Optional.of(Collections.unmodifiableSet(medicalConditions)) : Optional.empty();
+        }
         @Override
         public boolean equals(Object other) {
             if (other == this) {
