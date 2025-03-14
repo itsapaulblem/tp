@@ -18,11 +18,13 @@ public class ConditionCommand extends Command {
     public static final String COMMAND_WORD = "condition";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Adds a medical condition to the patient identified by the index number used in the displayed person list.\n"
+            + ": Adds a medical condition to the patient identified " +
+            "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) CONDITION (must be 6 words or less)\n"
             + "Example: " + COMMAND_WORD + " 1 diabetes";
 
-    public static final String MESSAGE_SUCCESS = "You have successfully recorded %1$s's condition: %2$s";
+    public static final String MESSAGE_SUCCESS = "You have successfully recorded " +
+            "%1$s's condition: %2$s";
     public static final String MESSAGE_CONDITION_TOO_LONG = "The input condition is too long! Please summarise it to 6 words or less.";
 
     private final Index targetIndex;
@@ -44,7 +46,8 @@ public class ConditionCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages
+                    .MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         Person patientToUpdate = lastShownList.get(targetIndex.getZeroBased());

@@ -4,7 +4,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -44,6 +43,16 @@ public class Person {
         return Collections.unmodifiableSet(medicalConditions);
     }
 
+    /**
+     * Adds a medical condition to the person's record.
+     *
+     * This method creates a new {@code Person} object with the specified medical
+     * condition added to the existing set of conditions. It ensures that the original
+     * {@code Person} object remains unchanged, adhering to immutability principles.
+     *
+     * @param condition The medical condition to add.
+     * @return A new {@code Person} object with the added medical condition.
+     */
     public Person addMedicalCondition(String condition) {
         Set<String> updatedConditions = new HashSet<>(this.medicalConditions);
         updatedConditions.add(condition);

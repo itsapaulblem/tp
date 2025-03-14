@@ -110,9 +110,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Set<String> updatedMedicalConditions = editPersonDescriptor.getMedicalConditions().orElse(personToEdit.getMedicalConditions());
+        Set<String> updatedMedicalConditions = editPersonDescriptor
+                .getMedicalConditions().orElse(personToEdit.getMedicalConditions());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedMedicalConditions);
+        return new Person(updatedName, updatedPhone, updatedEmail,
+                updatedAddress, updatedTags, updatedMedicalConditions);
     }
 
     @Override
@@ -231,7 +233,8 @@ public class EditCommand extends Command {
         }
 
         public Optional<Set<String>> getMedicalConditions() {
-            return (medicalConditions != null) ? Optional.of(Collections.unmodifiableSet(medicalConditions)) : Optional.empty();
+            return (medicalConditions != null) ? Optional.of(Collections
+                    .unmodifiableSet(medicalConditions)) : Optional.empty();
         }
         @Override
         public boolean equals(Object other) {
