@@ -230,9 +230,23 @@ public class AddCommandTest {
         }
 
         @Override
+        public void commitAddressBook() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        public void undoAddressBook() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        public boolean canUndoAddressBook() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
         public ReadOnlyAddressBook getEmptyAddressBook() {
             return new AddressBook();
         }
+
     }
 
     /**
