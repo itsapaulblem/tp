@@ -9,11 +9,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListArchiveCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.UnarchiveCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -209,10 +205,11 @@ public class LogicManager implements Logic {
      */
     private boolean isCommandAllowed(Command command) {
         if (isArchiveMode) {
-            // Allow UnarchiveCommand, ListArchiveCommand, and ListCommand in archive mode
             return command instanceof UnarchiveCommand
                     || command instanceof ListArchiveCommand
-                    || command instanceof ListCommand;
+                    || command instanceof ListCommand
+                    || command instanceof HelpCommand
+                    || command instanceof ExitCommand;
         } else {
             // In normal mode, disallow UnarchiveCommand
             return !(command instanceof UnarchiveCommand);
