@@ -56,7 +56,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This patient already exists in HealthSync.";
-    public static final String MESSAGE_CONFIRMATION = "Are you sure you want to edit this patient? (y/n)";
+    public static final String MESSAGE_CONFIRMATION = "Are you sure you want to edit this patient? (Y/N)";
     public static final String MESSAGE_NO_CHANGES = "No changes were made to the patient's information.";
 
     private final Index index;

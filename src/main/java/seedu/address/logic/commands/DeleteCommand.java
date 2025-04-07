@@ -24,7 +24,7 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Patient: %1$s";
-    public static final String MESSAGE_CONFIRMATION = "Are you sure you want to delete this patient? (y/n)";
+    public static final String MESSAGE_CONFIRMATION = "Are you sure you want to delete this patient? (Y/N)";
 
     private final Index targetIndex;
     private boolean needsConfirmation;
